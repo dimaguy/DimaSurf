@@ -144,17 +144,23 @@
     'Monitors the page loading and reports errors (of itself)
     Private Sub WebBrowser1_ProgressChanged(ByVal sender As Object, ByVal e As WebBrowserProgressChangedEventArgs) Handles WebBrowser1.ProgressChanged
         'Some more fancy code...
-        'Error reports disabled since they were very annoying and mainly useless
+        'TODO: add some handmade error handlers...
         Try
             ProgressBar1.Maximum = e.MaximumProgress
-            ProgressBar1.Value = e.CurrentProgress
+            ProgressBar1.Minimum = 0
+            If (e.CurrentProgress > 0 Or e.CurrentProgress = 0) Then
+                If e.CurrentProgress > e.MaximumProgress Then
+                    ProgressBar1.Maximum = e.CurrentProgress
+                    DConsole.WriteLine("ERROR: NOT critical - Progress Bar Throttling - Setting Maximum value to Current value")
+                End If
+                ProgressBar1.Value = e.CurrentProgress
+            End If
 
             If (e.CurrentProgress.ToString = "0" = False) And (e.MaximumProgress.ToString = "0" = False) Then
-                DConsole.WriteLine("Progress:" + e.CurrentProgress.ToString() + "/" + e.MaximumProgress.ToString + vbNewLine)
+                DConsole.WriteLine("INFO: Progress -" + e.CurrentProgress.ToString() + "/" + e.MaximumProgress.ToString + vbNewLine)
             End If
 
             If ProgressBar1.Value = ProgressBar1.Maximum Then
-
 
                 ProgressBar1.Value = ProgressBar1.Maximum
                 Return
