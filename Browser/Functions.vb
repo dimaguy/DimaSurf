@@ -5,7 +5,7 @@ Module Functions
     Public Function UrlIsValid(ByVal url As String) As Boolean
         Dim is_valid As Boolean = False
         If url.ToLower().StartsWith("www.") Then url =
-            "http://" & url
+            "https://" & url
 
         Dim web_response As HttpWebResponse = Nothing
         Try
