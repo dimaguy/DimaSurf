@@ -4,8 +4,8 @@
     ' On a fresh start the browser will load with default configs which can be altered on settings and loaded on a second start
     Private Sub Browser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If My.Settings.home = "" And My.Settings.search = "" Then
-            My.Settings.home = "http:\\www.google.com"
-            My.Settings.search = "http:\\www.google.com"
+            My.Settings.home = "http://www.google.com"
+            My.Settings.search = "http://www.google.com"
             DConsole.WriteLine("Fresh start! Setting Home and Search buttons to default..." + vbNewLine)
         End If
         'Browser starts with no Back and Forward buttons for no real reason other than common sense
@@ -35,8 +35,19 @@
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
             Return
         End If
+        Dim url1 = ""
         DConsole.WriteLine("INFO: Navigating to: " + urltb.Text + vbNewLine)
-        WebBrowser1.Navigate(urltb.Text)
+        If HttpsExists(urltb.Text) = True Then
+            If urltb.Text.StartsWith("https://") Then
+                WebBrowser1.Navigate(urltb.Text)
+            Else
+                url1 = urltb.Text.Remove(0, 7)
+                WebBrowser1.Navigate("https://" + urltb.Text)
+            End If
+        Else
+            WebBrowser1.Navigate(urltb.Text)
+        End If
+
     End Sub
     'Back Button
     Private Sub Backbtn_Click(sender As Object, e As EventArgs) Handles backbtn.Click
@@ -157,7 +168,7 @@
             End If
 
             If (e.CurrentProgress.ToString = "0" = False) And (e.MaximumProgress.ToString = "0" = False) Then
-                DConsole.WriteLine("INFO: Progress -" + e.CurrentProgress.ToString() + "/" + e.MaximumProgress.ToString + vbNewLine)
+                DConsole.WriteLine("INFO: Progress - " + e.CurrentProgress.ToString() + "/" + e.MaximumProgress.ToString + vbNewLine)
             End If
 
             If ProgressBar1.Value = ProgressBar1.Maximum Then
