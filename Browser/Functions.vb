@@ -32,10 +32,13 @@ Module Functions
         If url.ToLower().StartsWith("http://") Then url1 =
             "https://" & url.Remove(0, 7)
         If url.ToLower().StartsWith("https://") Then url1 = url
+        If url.ToLower().StartsWith("www.") = False And url.ToLower().StartsWith("http://") = False And url.ToLower().StartsWith("https://") = False Then
+            url1 = "https://" & url
+        End If
         Dim web_response As HttpWebResponse = Nothing
         Try
             Dim web_request As HttpWebRequest =
-                HttpWebRequest.Create(url1)
+                WebRequest.Create(url1)
             web_response =
                 DirectCast(web_request.GetResponse(),
                 HttpWebResponse)
