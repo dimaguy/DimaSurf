@@ -29,6 +29,8 @@ Partial Class Settings
         Me.Save = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Google_SafeBrowsing_API_KEY = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -44,7 +46,7 @@ Partial Class Settings
         'homeurl
         '
         Me.homeurl.Location = New System.Drawing.Point(16, 31)
-        Me.homeurl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.homeurl.Margin = New System.Windows.Forms.Padding(4)
         Me.homeurl.Name = "homeurl"
         Me.homeurl.Size = New System.Drawing.Size(317, 22)
         Me.homeurl.TabIndex = 1
@@ -62,15 +64,15 @@ Partial Class Settings
         'searchurl
         '
         Me.searchurl.Location = New System.Drawing.Point(16, 80)
-        Me.searchurl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.searchurl.Margin = New System.Windows.Forms.Padding(4)
         Me.searchurl.Name = "searchurl"
         Me.searchurl.Size = New System.Drawing.Size(317, 22)
         Me.searchurl.TabIndex = 3
         '
         'Save
         '
-        Me.Save.Location = New System.Drawing.Point(237, 112)
-        Me.Save.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Save.Location = New System.Drawing.Point(238, 183)
+        Me.Save.Margin = New System.Windows.Forms.Padding(4)
         Me.Save.Name = "Save"
         Me.Save.Size = New System.Drawing.Size(100, 28)
         Me.Save.TabIndex = 4
@@ -79,8 +81,8 @@ Partial Class Settings
         '
         'Cancel
         '
-        Me.Cancel.Location = New System.Drawing.Point(129, 112)
-        Me.Cancel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Cancel.Location = New System.Drawing.Point(130, 183)
+        Me.Cancel.Margin = New System.Windows.Forms.Padding(4)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(100, 28)
         Me.Cancel.TabIndex = 5
@@ -90,18 +92,36 @@ Partial Class Settings
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(19, 112)
+        Me.CheckBox1.Location = New System.Drawing.Point(16, 188)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(81, 21)
         Me.CheckBox1.TabIndex = 6
         Me.CheckBox1.Text = "Console"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(16, 106)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(200, 17)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Google SafeBrowsing API KEY"
+        '
+        'Google_SafeBrowsing_API_KEY
+        '
+        Me.Google_SafeBrowsing_API_KEY.Location = New System.Drawing.Point(16, 127)
+        Me.Google_SafeBrowsing_API_KEY.Name = "Google_SafeBrowsing_API_KEY"
+        Me.Google_SafeBrowsing_API_KEY.Size = New System.Drawing.Size(317, 22)
+        Me.Google_SafeBrowsing_API_KEY.TabIndex = 8
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(351, 160)
+        Me.ClientSize = New System.Drawing.Size(351, 224)
+        Me.Controls.Add(Me.Google_SafeBrowsing_API_KEY)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.Save)
@@ -109,7 +129,7 @@ Partial Class Settings
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.homeurl)
         Me.Controls.Add(Me.Label1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Settings"
         Me.Text = "Settings"
         Me.ResumeLayout(False)
@@ -124,4 +144,6 @@ Partial Class Settings
     Friend WithEvents Save As Button
     Friend WithEvents Cancel As Button
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Google_SafeBrowsing_API_KEY As TextBox
 End Class

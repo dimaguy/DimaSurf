@@ -77,6 +77,18 @@ Namespace My
                 Me("search") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property gsbapikey() As String
+            Get
+                Return CType(Me("gsbapikey"),String)
+            End Get
+            Set
+                Me("gsbapikey") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

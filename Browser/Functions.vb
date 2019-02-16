@@ -1,4 +1,6 @@
 ﻿Imports System.Net
+Imports Google.Apis.Safebrowsing.v4
+Imports Google.Apis.Services
 
 Module Functions
     'This Function validates a URL
@@ -50,5 +52,9 @@ Module Functions
             If Not (web_response Is Nothing) Then _
                 web_response.Close()
         End Try
+    End Function
+    Public Function IsUrlSafe() As String
+        Dim service = New SafebrowsingService(New BaseClientService.Initializer)
+        service.
     End Function
 End Module

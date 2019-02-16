@@ -9,6 +9,7 @@ Public Class Settings
         End If
         homeurl.Text = My.Settings.home
         searchurl.Text = My.Settings.search
+        Google_SafeBrowsing_API_KEY.Text = My.Settings.gsbapikey
     End Sub
 
     Private Sub Save_Click(sender As Object, e As EventArgs) Handles Save.Click
@@ -27,6 +28,7 @@ Public Class Settings
             MessageBox.Show("Please insert a valid Home URL/IP", "Invalid string",
     MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+        My.Settings.gsbapikey = Google_SafeBrowsing_API_KEY.Text
         Me.Close()
     End Sub
 
