@@ -13,27 +13,35 @@ Public Class Settings
     End Sub
 
     Private Sub Save_Click(sender As Object, e As EventArgs) Handles Save.Click
-        Dim ip As IPAddress = Nothing
-        Dim homeip As Boolean = IPAddress.TryParse(homeurl.Text, ip)
-        Dim searchip As Boolean = IPAddress.TryParse(searchurl.Text, ip)
-        If UrlIsValid(homeurl.Text) = True Or homeip = True Then
-            If UrlIsValid(searchurl.Text) = True Or homeip = True Then
-                My.Settings.home = homeurl.Text
-                My.Settings.search = searchurl.Text
+        Try
+            Dim ip As IPAddress = Nothing
+            Dim homeip As Boolean = IPAddress.TryParse(homeurl.Text, ip)
+            Dim searchip As Boolean = IPAddress.TryParse(searchurl.Text, ip)
+            If UrlIsValid(homeurl.Text) = True Or homeip = True Then
+                If UrlIsValid(searchurl.Text) = True Or homeip = True Then
+                    My.Settings.home = homeurl.Text
+                    My.Settings.search = searchurl.Text
+                Else
+                    MessageBox.Show("Please insert a valid Search URL/IP", "Invalid string",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
             Else
-                MessageBox.Show("Please insert a valid Search URL/IP", "Invalid string",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Please insert a valid Home URL/IP", "Invalid string",
+        MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
-        Else
-            MessageBox.Show("Please insert a valid Home URL/IP", "Invalid string",
-    MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
-        My.Settings.gsbapikey = Google_SafeBrowsing_API_KEY.Text
-        Me.Close()
+            My.Settings.gsbapikey = Google_SafeBrowsing_API_KEY.Text
+            Me.Close()
+        Catch ex As Exception
+            DConsole.WriteLine(ReadException(ex))
+        End Try
     End Sub
 
     Private Sub Cancel_Click(sender As Object, e As EventArgs) Handles Cancel.Click
-        Me.Close()
+        Try
+            Me.Close()
+        Catch ex As Exception
+            DConsole.WriteLine(ReadException(ex))
+        End Try
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
@@ -44,4 +52,3 @@ Public Class Settings
         End If
     End Sub
 End Class
-'TODO: add some... performance monitor... bcoz it looks fancy

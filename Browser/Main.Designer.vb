@@ -50,6 +50,7 @@ Partial Class Main
         '
         'urltb
         '
+        Me.urltb.HideSelection = False
         Me.urltb.Location = New System.Drawing.Point(89, 6)
         Me.urltb.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.urltb.Name = "urltb"

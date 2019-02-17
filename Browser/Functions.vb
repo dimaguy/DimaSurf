@@ -18,8 +18,8 @@ Module Functions
                 HttpWebResponse)
             Return True
         Catch ex As Exception
+            DConsole.WriteLine(ReadException(ex))
             web_response.Close()
-            DConsole.WriteLine("ERROR: Invalid URL")
             Return False
         Finally
             If Not (web_response Is Nothing) Then _
@@ -46,15 +46,22 @@ Module Functions
                 HttpWebResponse)
             Return True
         Catch ex As Exception
-            DConsole.WriteLine("No HTTPS")
+            DConsole.WriteLine(ReadException(ex))
             Return False
-        Finally
             If Not (web_response Is Nothing) Then _
                 web_response.Close()
         End Try
     End Function
     Public Function IsUrlSafe() As String
         Dim service = New SafebrowsingService(New BaseClientService.Initializer)
-        service.
+        'service.
+        Return "DISABLED"
+    End Function
+    Public Function ReadException(ByVal ex As Exception) As String
+        Dim msg As String = ex.Message
+        If ex.InnerException IsNot Nothing Then
+            msg = msg & vbCrLf & "---------" & vbCrLf & ReadException(ex.InnerException)
+        End If
+        Return msg
     End Function
 End Module
